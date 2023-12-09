@@ -5,7 +5,7 @@ class zot::config (
   String $group = $zot::group,
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
-  $_conf = merge($zot::defaults, {
+  $_conf = deep_merge($zot::defaults, {
       'storage' => {
         'rootDirectory' => $zot::data_dir,
       },
@@ -15,7 +15,7 @@ class zot::config (
       }
   })
 
-  $config = merge($_conf, $zot::config)
+  $config = deep_merge($_conf, $zot::config)
 
   user { $user:
     ensure => present,
