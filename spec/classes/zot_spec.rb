@@ -15,10 +15,11 @@ describe 'zot' do
     it { is_expected.to contain_class('zot::service') }
 
     it { is_expected.to contain_archive('/usr/bin/zot') }
+    it { is_expected.to contain_archive('/usr/bin/zli') }
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/lib/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/log/zot').with_ensure('directory') }
-    it { is_expected.to contain_service('zot').with_ensure('running') }
+    it { is_expected.to contain_service('zot').with_ensure('running').that_subscribes_to('File[/etc/zot/config.json]') }
     it { is_expected.to contain_user('zot').with_ensure('present') }
     it { is_expected.to contain_group('zot').with_ensure('present') }
     it {
@@ -26,5 +27,6 @@ describe 'zot' do
                                                          .with_content(%r{"distSpecVersion":\s+"1.0.1"})
                                                          .with_content(%r{"rootDirectory":\s+"/var/lib/zot"})
     }
+    it { is_expected.to contain_systemd__unit_file('zot.service').with_ensure('present') }
   end
 end
