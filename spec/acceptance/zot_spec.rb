@@ -7,7 +7,9 @@ describe 'zot' do
   context 'basic setup' do
     it 'install zot' do
       pp = <<~EOS
-        class { 'zot': }
+        class { 'zot':
+          version => '2.0.0-rc7',
+        }
       EOS
 
       apply_manifest(pp, catch_failures: true)
@@ -31,7 +33,7 @@ describe 'zot' do
       it { is_expected.to be_running }
     end
 
-    describe command('zot verify /etc/zot/config.json | tail -n1') do
+    describe command('zot verify /etc/zot/config.json') do
       its(:stdout) { is_expected.to match(%r{is valid}) }
     end
   end

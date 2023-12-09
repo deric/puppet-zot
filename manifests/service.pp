@@ -13,7 +13,7 @@ class zot::service (
       }),
       active  => true,
       enable  => $zot::service_enable,
-      require => Archive[$zot::binary],
+      require => File[$zot::binary],
     }
 
     service { $zot::service_name:

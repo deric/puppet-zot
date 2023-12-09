@@ -14,7 +14,8 @@ describe 'zot' do
     it { is_expected.to contain_class('zot::install') }
     it { is_expected.to contain_class('zot::service') }
 
-    it { is_expected.to contain_archive('/usr/bin/zot') }
+    it { is_expected.to contain_archive('/usr/bin/zot-1.4.3') }
+    it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-1.4.3') }
     it { is_expected.to contain_archive('/usr/bin/zli') }
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/lib/zot').with_ensure('directory') }

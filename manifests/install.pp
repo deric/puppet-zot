@@ -7,7 +7,9 @@ class zot::install (
   String $version = $zot::version,
   String $arch = $facts['os']['architecture'],
 ) {
-  archive { $binary:
+  $_zot = "${binary}-${version}"
+  # archive won't replace binay upon version change
+  archive { $_zot:
     source          => "https://github.com/project-zot/zot/releases/download/v${version}/zot-linux-${arch}",
     checksum_verify => false,
     extract         => true,
@@ -15,6 +17,12 @@ class zot::install (
     extract_command => 'chmod +x %s',
     cleanup         => false,
     creates         => [$binary],
+  }
+
+  file { $binary:
+    ensure  => link,
+    target  => $_zot,
+    replace => true,
   }
 
   archive { '/usr/bin/zli':
