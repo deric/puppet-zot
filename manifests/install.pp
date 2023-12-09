@@ -5,7 +5,8 @@
 class zot::install (
   String $binary = $zot::binary,
   String $version = $zot::version,
-  String $arch = $facts['os']['architecture'],
+  # $facts['os']['architecture'] is on RedHat x86_64 while on Debian amd64
+  String $arch = 'amd64',
 ) {
   $_zot = "${binary}-${version}"
   # archive won't replace binay upon version change
