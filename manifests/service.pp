@@ -12,6 +12,7 @@ class zot::service (
           'config_file' => $zot::config::path,
       }),
       active  => true,
+      enable  => $zot::service_enable,
       require => Archive[$zot::binary],
     }
 

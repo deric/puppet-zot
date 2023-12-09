@@ -20,13 +20,19 @@ describe 'zot' do
       it { is_expected.to be_readable.by('group') }
     end
 
+    describe file('/etc/zot/config.json') do
+      it { is_expected.to be_file }
+      it { is_expected.to be_readable.by('owner') }
+      it { is_expected.to be_readable.by('group') }
+    end
+
     describe service('zot') do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
 
     describe command('zot verify /etc/zot/config.json') do
-      its(:stdout) { is_expected.to match 'Config file is valid' }
+      its(:stdout) { is_expected.to match(%r{is valid}) }
     end
   end
 end
