@@ -6,10 +6,14 @@ class zot::config (
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
   $_conf = merge($zot::defaults, {
-    'storage' => {
-      'rootDirectory' => $zot::data_dir,
-    }
-    })
+      'storage' => {
+        'rootDirectory' => $zot::data_dir,
+      },
+      'log' => {
+        'output' => "${zot::log_dir}/zot.log",
+        'audit' => "${zot::log_dir}/zot-audit.log",
+      }
+  })
 
   $config = merge($_conf, $zot::config)
 

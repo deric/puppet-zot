@@ -20,12 +20,10 @@ zot::defaults:
     gcInterval: 6h
   http:
     address: 0.0.0.0
-    port: "5000"
+    port: 5000
     realm: zot
   log:
     level: info
-    output: /var/log/zot/zot.log
-    audit: /var/log/zot/zot-audit.log
   extensions:
     search:
       enable: true

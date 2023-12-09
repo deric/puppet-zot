@@ -21,9 +21,10 @@ describe 'zot' do
     it { is_expected.to contain_service('zot').with_ensure('running') }
     it { is_expected.to contain_user('zot').with_ensure('present') }
     it { is_expected.to contain_group('zot').with_ensure('present') }
-    it { is_expected.to contain_file('/etc/zot/config.json').with_ensure('file')
-      .with_content(%r{"distSpecVersion":\s+"1.0.1"})
-      .with_content(%r{"rootDirectory":\s+"/var/lib/zot"})
+    it {
+      is_expected.to contain_file('/etc/zot/config.json').with_ensure('file')
+                                                         .with_content(%r{"distSpecVersion":\s+"1.0.1"})
+                                                         .with_content(%r{"rootDirectory":\s+"/var/lib/zot"})
     }
   end
 end
