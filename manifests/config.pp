@@ -5,7 +5,13 @@ class zot::config (
   String $group = $zot::group,
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
-  $config = $zot::config
+  $_conf = merge($zot::defaults, {
+    'storage' => {
+      'rootDirectory' => $zot::data_dir,
+    }
+    })
+
+  $config = merge($_conf, $zot::config)
 
   user { $user:
     ensure => present,

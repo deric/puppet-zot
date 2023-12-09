@@ -11,3 +11,28 @@ zot::service_name: zot
 zot::service_ensure: running
 zot::service_enable: true
 zot::config: {}
+zot::defaults:
+  distSpecVersion: 1.0.1
+  storage:
+    dedupe: true
+    gc: true
+    gcDelay: 1h
+    gcInterval: 6h
+  http:
+    address: 0.0.0.0
+    port: "5000"
+    realm: zot
+  log:
+    level: info
+    output: /var/log/zot/zot.log
+    audit: /var/log/zot/zot-audit.log
+  extensions:
+    search:
+      enable: true
+      cve:
+        updateInterval: 24h
+    scrub:
+      interval: 24h
+lookup_options:
+  zot::config:
+    merge: deep

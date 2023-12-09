@@ -24,5 +24,9 @@ describe 'zot' do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+
+    describe command('zot verify /etc/zot/config.json') do
+      its(:stdout) { is_expected.to match 'Config file is valid' }
+    end
   end
 end

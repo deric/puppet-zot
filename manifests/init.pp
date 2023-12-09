@@ -3,12 +3,13 @@
 #   Without `v` prefix
 # @param binary
 #    path to the main executable
+# @param config
+# @param defaults
 # @param user
 # @param group
 # @param config_dir
 # @param log_dir
 # @param data_dir
-# @param config
 # @param manage_service
 # @param service_name
 # @param service_ensure
@@ -16,6 +17,7 @@
 # @see https://zotregistry.io/
 class zot (
   Hash             $config,
+  Hash             $defaults,
   String           $version,
   Stdlib::Unixpath $binary,
   String           $user,
