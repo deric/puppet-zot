@@ -2,9 +2,11 @@
 # @param version
 #   Without `v` prefix
 # @param binary
-#    path to the main executable
+#   path to the main executable
 # @param config
+#   Main zot configuration,
 # @param defaults
+#   Default values that would be overwritten by $config Hash
 # @param user
 # @param group
 # @param config_dir
@@ -15,6 +17,17 @@
 # @param service_ensure
 # @param service_enable
 # @see https://zotregistry.io/
+# @example
+#   include zot
+# @example
+#   # using Puppet code
+#   class { 'zot':
+#     config => {
+#        'http' => {
+#           'port' => 80,
+#        }
+#     }
+#   }
 class zot (
   Hash             $config,
   Hash             $defaults,
