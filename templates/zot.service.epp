@@ -1,0 +1,17 @@
+[Unit]
+Description=OCI Distribution Registry
+Documentation=https://zotregistry.io/
+After=network.target auditd.service local-fs.target
+
+[Service]
+Type=simple
+ExecStart=<%= $binary %> serve <%= $config_file %>
+Restart=on-failure
+User=<%= $user %>
+Group=<%= $group %>
+LimitNOFILE=500000
+MemoryHigh=30G
+MemoryMax=32G
+
+[Install]
+WantedBy=multi-user.target

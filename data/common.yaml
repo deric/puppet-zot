@@ -1,1 +1,9 @@
---- {}
+---
+zot::version: 1.4.3
+zot::binary: /usr/bin/zot
+zot::user: zot
+zot::group: zot
+zot::config_dir: /etc/zot
+zot::log_dir: /var/log/zot
+zot::data_dir: /var/lib/zot
+zot::manage_service: true
