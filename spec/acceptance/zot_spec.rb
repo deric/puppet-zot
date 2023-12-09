@@ -31,7 +31,7 @@ describe 'zot' do
       it { is_expected.to be_running }
     end
 
-    describe command('zot verify /etc/zot/config.json') do
+    describe command('zot verify /etc/zot/config.json | tail -n1') do
       its(:stdout) { is_expected.to match(%r{is valid}) }
     end
   end
