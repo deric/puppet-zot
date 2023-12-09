@@ -34,7 +34,7 @@ describe 'zot' do
     end
 
     describe command('zot verify /etc/zot/config.json') do
-      its(:stdout) { is_expected.to match(%r{is valid}) }
+      its(:stderr) { is_expected.to match(%r{Config file is valid}) }
     end
   end
 end
