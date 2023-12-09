@@ -7,3 +7,6 @@ zot::config_dir: /etc/zot
 zot::log_dir: /var/log/zot
 zot::data_dir: /var/lib/zot
 zot::manage_service: true
+zot::service_name: zot
+zot::service_ensure: running
+zot::service_enable: true

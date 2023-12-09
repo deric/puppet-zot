@@ -18,6 +18,7 @@ appveyor.yml:
   paths:
     - '/.vscode/'
     - '/.devcontainer/'
+    - '.ruby-version'
 spec/spec_helper.rb:
   coverage_report: true
 Gemfile:

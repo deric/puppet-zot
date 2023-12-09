@@ -1,17 +1,23 @@
 # @summary zot service
 # @api private
-class zot::service {
+class zot::service (
+  String $service_name = $zot::service_name,
+  ) {
   if $zot::manage_service {
-    systemd::unit_file { 'zot.service':
-      content => epp("${module_name}/zot.service.epp", {
+    systemd::unit_file { "${service_name}.service":
+      content => epp("${module_name}/${service_name}.service.epp", {
           'binary'      => $zot::binary,
           'user'        => $zot::user,
           'group'       => $zot::group,
           'config_file' => $zot::config::path,
       }),
-      enable  => true,
       active  => true,
       require => Archive[$zot::binary],
+    }
+
+    service { $zot::service_name:
+      ensure => $zot::service_ensure,
+      enable => $zot::service_enable,
     }
   }
 }

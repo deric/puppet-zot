@@ -18,6 +18,8 @@ describe 'zot' do
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/lib/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/log/zot').with_ensure('directory') }
-    #it { is_expected.to contain_service('zot').with_ensure('running') }
+    it { is_expected.to contain_service('zot').with_ensure('running') }
+    it { is_expected.to contain_user('zot').with_ensure('present') }
+    it { is_expected.to contain_group('zot').with_ensure('present') }
   end
 end
