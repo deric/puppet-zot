@@ -3,12 +3,11 @@
 require 'spec_helper_acceptance'
 require 'pry'
 
-describe 'fluentbit' do
+describe 'zot' do
   context 'basic setup' do
     it 'install zot' do
       pp = <<~EOS
-        class { 'zot':
-        }
+        class { 'zot': }
       EOS
 
       apply_manifest(pp, catch_failures: true)
