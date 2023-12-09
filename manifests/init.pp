@@ -8,9 +8,14 @@
 # @param config_dir
 # @param log_dir
 # @param data_dir
+# @param config
+# @param manage_service
+# @param service_name
+# @param service_ensure
+# @param service_enable
 # @see https://zotregistry.io/
 class zot (
-  Hash             $config = {},
+  Hash             $config,
   String           $version,
   Stdlib::Unixpath $binary,
   String           $user,
