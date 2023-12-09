@@ -7,13 +7,14 @@ Puppet module to manage [zot registry](https://zotregistry.io/).
 ## Usage
 
 Following code would start `zot` registry based on configuration values defined in [in Hiera common.yaml](./data/common.yaml).
-```
+
+```puppet
 include zot
 ```
 
 ## Examples
 
-Override installed version
+Override installed version, see [zot releases](https://github.com/project-zot/zot/releases).
 ```yaml
 zot::version: 2.0.0-rc7
 ```
@@ -30,6 +31,11 @@ Turn on debugging:
 zot::config:
   log:
     level: debug
+```
+
+Change storage directory:
+```yaml
+zot::data_dir: /srv/zot
 ```
 
 ## Configuration
