@@ -41,3 +41,5 @@ zot::data_dir: /srv/zot
 ## Configuration
 
 For full parameter reference see [the official documentation for the installed version](https://zotregistry.io/v1.4.3/admin-guide/admin-configuration/).
+
+Puppet variables for documented in [REFERENCE.md](./REFERENCE.md).
