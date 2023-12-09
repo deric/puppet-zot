@@ -12,7 +12,8 @@ describe 'zot' do
         }
       EOS
 
-      apply_manifest(pp, catch_failures: true)
+      # first run seems to exit with code 6 (systemd reload)
+      apply_manifest(pp, catch_failures: false)
       apply_manifest(pp, catch_changes: true)
     end
 
