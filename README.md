@@ -19,12 +19,12 @@ Override installed version, see [zot releases](https://github.com/project-zot/zo
 zot::version: 2.0.0-rc7
 ```
 
-Bind on all interfaces and port `80`
+Bind on all interfaces and port `8080`
 ```yaml
 zot::config:
   http:
     address: 0.0.0.0
-    port: 80
+    port: 8080
 ```
 Turn on debugging:
 ```yaml
@@ -52,15 +52,18 @@ zot::log_dir: /var/log/zot
 zot::data_dir: /var/lib/zot
 zot::config:
   distSpecVersion: 1.0.1
+  http:
+    address: 0.0.0.0
+    port: 5000
+    realm: zot
+    tls:
+      cert: /etc/letsencrypt/live/my.registry/fullchain.pem
+      key: /etc/letsencrypt/live/my.registry/privkey.pem
   storage:
     dedupe: true
     gc: true
     gcDelay: 1h
     gcInterval: 6h
-  http:
-    address: 0.0.0.0
-    port: 443
-    realm: zot
   log:
     level: info
   extensions:
@@ -143,14 +146,14 @@ zot::config:
               deleteReferrers: false
   http:
     address: 127.0.0.1
-    port: "8080"
+    port: 8080
   log:
     level: debug
 ```
 
 ## Configuration
 
-For full parameter reference see [the official documentation for the installed version](https://zotregistry.io/v1.4.3/admin-guide/admin-configuration/).
+For full parameter reference see [the official documentation for the installed version](https://zotregistry.io/v1.4.3/admin-guide/admin-configuration/). This module doesn't attempt to validate registry config specification. Merged configuration is serialized to JSON which will be syntactically correct but the config should be validated against `distSpecVersion` using e.g. `zot verify /etc/zot/config.json`.
 
 Change storage directory:
 ```yaml
@@ -160,6 +163,15 @@ zot::data_dir: /srv/zot
 Change log directory:
 ```yaml
 zot::log_dir: /srv/log
+```
+
+In order to bind the `zot` service on ports < 1024, you'll need either `root` priviledges or configure bind capabilities, e.g. using [file_capability](https://github.com/smoeding/puppet-file_capability)
+
+```yaml
+file_capability::file_capabilities:
+  "/usr/bin/zot-%{alias('zot::version')}":
+    ensure: present
+    capability: 'cap_net_bind_service=eip'
 ```
 
 All Puppet variables are documented in [REFERENCE.md](./REFERENCE.md).
