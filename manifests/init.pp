@@ -32,6 +32,8 @@
 #   URI used for downloading zot binaries
 # @param arch
 #   Release architecture, eiter `amd64` or `arm64`. Default: `amd64`
+# @param os
+#   Used for downloading precompiled binary for given OS, default: `linux`
 # @param uid
 #   User account UID
 # @param gid
@@ -67,6 +69,7 @@ class zot (
   Boolean           $manage_zli,
   Stdlib::HTTPUrl   $download_mirror,
   Zot::Arch         $arch,
+  Zot::Os           $os,
   Optional[Integer] $uid = undef,
   Optional[Integer] $gid = undef,
 ) {

@@ -7,6 +7,7 @@ class zot::install (
   Stdlib::Unixpath $bin_path = $zot::bin_path,
   String           $version = $zot::version,
   Zot::Arch        $arch = $zot::arch,
+  Zot::Os          $os = $zot::os,
   Stdlib::HTTPUrl  $download_mirror = $zot::download_mirror,
 ) {
   $zot_binary = "${bin_path}/${zot::binary}"
@@ -14,7 +15,7 @@ class zot::install (
   $_zot = "${zot_binary}-${version}"
   # archive won't replace binay upon version change
   archive { $_zot:
-    source          => "${zot::download_mirror}/v${version}/zot-linux-${arch}",
+    source          => "${zot::download_mirror}/v${version}/zot-${os}-${arch}",
     checksum_verify => false,
     extract         => true,
     extract_path    => $bin_path,
@@ -33,7 +34,7 @@ class zot::install (
     $zli_binary = "${bin_path}/zli"
     $_zli = "${zli_binary}-${version}"
     archive { $_zli:
-      source          => "${zot::download_mirror}/v${version}/zli-linux-${arch}",
+      source          => "${zot::download_mirror}/v${version}/zli-${os}-${arch}",
       checksum_verify => false,
       extract         => true,
       extract_path    => $bin_path,

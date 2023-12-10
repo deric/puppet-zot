@@ -108,6 +108,7 @@ describe 'zot' do
         arch: 'arm64',
       }
     end
+
     it {
       is_expected.to contain_archive('/usr/bin/zot-1.4.3')
         .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-arm64')
