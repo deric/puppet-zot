@@ -33,13 +33,73 @@ zot::config:
     level: debug
 ```
 
-Change storage directory:
+Prometheus metrics:
+
 ```yaml
-zot::data_dir: /srv/zot
+zot::config:
+  extensions:
+    metrics:
+      enable: true
+      prometheus:
+        path: /metrics
+```
+
+Full example:
+```yaml
+---
+zot::version: 1.4.3
+zot::log_dir: /var/log/zot
+zot::data_dir: /var/lib/zot
+zot::config:
+  distSpecVersion: 1.0.1
+  storage:
+    dedupe: true
+    gc: true
+    gcDelay: 1h
+    gcInterval: 6h
+  http:
+    address: 0.0.0.0
+    port: 443
+    realm: zot
+  log:
+    level: info
+  extensions:
+    metrics:
+      enable: true
+      prometheus:
+        path: /metrics
+    search:
+      enable: true
+      cve:
+        updateInterval: 24h
+    sync:
+      enable: true
+      registries:
+        - urls:
+            - https://docker.io/library
+          onDemand: true  # only requested images will be cached
+          maxRetries: 3
+          retryDelay: 5m
+          pollInterval: 6h
+    scrub:
+      interval: 24h
+    ui:
+      enable: true
+
 ```
 
 ## Configuration
 
 For full parameter reference see [the official documentation for the installed version](https://zotregistry.io/v1.4.3/admin-guide/admin-configuration/).
+
+Change storage directory:
+```yaml
+zot::data_dir: /srv/zot
+```
+
+Change log directory:
+```yaml
+zot::log_dir: /srv/log
+```
 
 Puppet variables for documented in [REFERENCE.md](./REFERENCE.md).

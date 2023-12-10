@@ -19,6 +19,8 @@
 ### Data types
 
 * [`Zot::Arch`](#Zot--Arch): Supported build architecture
+* [`Zot::Config`](#Zot--Config): Configuration passed to zot serve
+* [`Zot::Os`](#Zot--Os): Supported operating system
 
 ## Classes
 
@@ -72,6 +74,7 @@ The following parameters are available in the `zot` class:
 * [`service_enable`](#-zot--service_enable)
 * [`download_mirror`](#-zot--download_mirror)
 * [`arch`](#-zot--arch)
+* [`os`](#-zot--os)
 * [`uid`](#-zot--uid)
 * [`gid`](#-zot--gid)
 
@@ -95,13 +98,13 @@ Path for installing binaries, default: `/usr/bin`
 
 ##### <a name="-zot--config"></a>`config`
 
-Data type: `Hash`
+Data type: `Zot::Config`
 
 Main zot configuration, as multi-level hash (see README for more examples)
 
 ##### <a name="-zot--defaults"></a>`defaults`
 
-Data type: `Hash`
+Data type: `Zot::Config`
 
 Default values that would be overwritten by $config Hash
 
@@ -183,6 +186,12 @@ Data type: `Zot::Arch`
 
 Release architecture, eiter `amd64` or `arm64`. Default: `amd64`
 
+##### <a name="-zot--os"></a>`os`
+
+Data type: `Zot::Os`
+
+Used for downloading precompiled binary for given OS, default: `linux`
+
 ##### <a name="-zot--uid"></a>`uid`
 
 Data type: `Optional[Integer]`
@@ -206,4 +215,26 @@ Default value: `undef`
 Supported build architecture
 
 Alias of `Enum['amd64', 'arm64']`
+
+### <a name="Zot--Config"></a>`Zot::Config`
+
+Configuration passed to zot serve
+
+Alias of
+
+```puppet
+Struct[{
+  Optional[distSpecVersion] => String[1],
+  Optional[storage]         => Hash,
+  Optional[http]            => Hash,
+  Optional[log]             => Hash,
+  Optional[extensions]      => Hash,
+}]
+```
+
+### <a name="Zot--Os"></a>`Zot::Os`
+
+Supported operating system
+
+Alias of `Enum['linux', 'freebsd', 'darwin']`
 

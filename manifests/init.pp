@@ -51,8 +51,8 @@
 #     }
 #   }
 class zot (
-  Hash              $config,
-  Hash              $defaults,
+  Zot::Config       $config,
+  Zot::Config       $defaults,
   String            $version,
   String            $binary,
   Stdlib::Unixpath  $bin_path,
