@@ -5,4 +5,5 @@ type Zot::Config = Struct[{
   Optional[http]            => Hash,
   Optional[log]             => Hash,
   Optional[extensions]      => Hash,
+  Optional[scheduler]       => Hash,
 }]

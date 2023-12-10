@@ -88,6 +88,66 @@ zot::config:
 
 ```
 
+retention:
+```yaml
+zot::data_dir: /tmp/zot
+zot::config:
+  distSpecVersion: 1.1.0-dev
+  storage:
+    gc: true
+    gcDelay: 2h
+    gcInterval: 1h
+    retention:
+      dryRun: false
+      delay: 24h
+      policies:
+        - repositories:
+            - infra/*
+            - prod/*
+          deleteReferrers: false
+          keepTags:
+            - patterns:
+                - v2.*
+                - .*-prod
+            - patterns:
+                - v3.*
+                - .*-prod
+              pulledWithin: 168h
+        - repositories:
+            - tmp/**
+          deleteReferrers: true
+          deleteUntagged: true
+          keepTags:
+            - patterns:
+                - v1.*
+              pulledWithin: 168h
+              pushedWithin: 168h
+        - repositories:
+            - '**'
+          deleteReferrers: true
+          deleteUntagged: true
+          keepTags:
+            - mostRecentlyPushedCount: 10
+              mostRecentlyPulledCount: 10
+              pulledWithin: 720h
+              pushedWithin: 720h
+    subPaths:
+      /a:
+        rootDirectory: /tmp/zot1
+        dedupe: true
+        retention:
+          policies:
+            - repositories:
+                - infra/*
+                - prod/*
+              deleteReferrers: false
+  http:
+    address: 127.0.0.1
+    port: "8080"
+  log:
+    level: debug
+```
+
 ## Configuration
 
 For full parameter reference see [the official documentation for the installed version](https://zotregistry.io/v1.4.3/admin-guide/admin-configuration/).

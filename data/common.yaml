@@ -39,3 +39,5 @@ zot::defaults:
 lookup_options:
   zot::config:
     merge: deep
+  zot::defaults:
+    merge: deep
