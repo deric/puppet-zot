@@ -49,4 +49,24 @@ class zot::install (
       replace => true,
     }
   }
+
+  if $zot::manage_zb {
+    $zb_binary = "${bin_path}/zb"
+    $_zb = "${zb_binary}-${version}"
+    archive { $_zb:
+      source          => "${zot::download_mirror}/v${version}/zb-${os}-${arch}",
+      checksum_verify => false,
+      extract         => true,
+      extract_path    => $bin_path,
+      extract_command => 'chmod +x %s',
+      cleanup         => false,
+      creates         => [$zb_binary],
+    }
+
+    file { $zb_binary:
+      ensure  => link,
+      target  => $_zb,
+      replace => true,
+    }
+  }
 }

@@ -69,6 +69,7 @@ The following parameters are available in the `zot` class:
 * [`manage_service`](#-zot--manage_service)
 * [`manage_config`](#-zot--manage_config)
 * [`manage_zli`](#-zot--manage_zli)
+* [`manage_zb`](#-zot--manage_zb)
 * [`service_name`](#-zot--service_name)
 * [`service_ensure`](#-zot--service_ensure)
 * [`service_enable`](#-zot--service_enable)
@@ -158,6 +159,12 @@ Whether zot config should be managed by Puppet, default: `true`
 Data type: `Boolean`
 
 Whether zli binary should be installed, default: `true`
+
+##### <a name="-zot--manage_zb"></a>`manage_zb`
+
+Data type: `Boolean`
+
+Whether zb binary should be installed, default: `true`
 
 ##### <a name="-zot--service_name"></a>`service_name`
 

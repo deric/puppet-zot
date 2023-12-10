@@ -25,6 +25,8 @@
 #   Whether zot config should be managed by Puppet, default: `true`
 # @param manage_zli
 #   Whether zli binary should be installed, default: `true`
+# @param manage_zb
+#   Whether zb binary should be installed, default: `true`
 # @param service_name
 # @param service_ensure
 # @param service_enable
@@ -73,6 +75,7 @@ class zot (
   Boolean           $manage_service,
   Boolean           $manage_config,
   Boolean           $manage_zli,
+  Boolean           $manage_zb,
   Stdlib::HTTPUrl   $download_mirror,
   Zot::Arch         $arch,
   Zot::Os           $os,

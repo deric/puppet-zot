@@ -12,6 +12,7 @@ zot::download_mirror: https://github.com/project-zot/zot/releases/download
 zot::manage_service: true
 zot::manage_config: true
 zot::manage_zli: true
+zot::manage_zb: true
 zot::service_name: zot
 zot::service_ensure: running
 zot::service_enable: true
