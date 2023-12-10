@@ -12,9 +12,9 @@
 
 #### Private Classes
 
-* `zot::config`: Manages configuration
+* `zot::config`: Manages configuration, merges Puppet hashes and serialized them into JSON config
 * `zot::install`: Zot installation
-* `zot::service`: zot service
+* `zot::service`: Zot service
 
 ## Classes
 
@@ -64,6 +64,8 @@ The following parameters are available in the `zot` class:
 * [`service_ensure`](#-zot--service_ensure)
 * [`service_enable`](#-zot--service_enable)
 * [`download_mirror`](#-zot--download_mirror)
+* [`uid`](#-zot--uid)
+* [`gid`](#-zot--gid)
 
 ##### <a name="-zot--version"></a>`version`
 
@@ -148,4 +150,20 @@ Data type: `Boolean`
 Data type: `Stdlib::HTTPUrl`
 
 URI used for downloading zot binaries
+
+##### <a name="-zot--uid"></a>`uid`
+
+Data type: `Optional[Integer]`
+
+User account UID
+
+Default value: `undef`
+
+##### <a name="-zot--gid"></a>`gid`
+
+Data type: `Optional[Integer]`
+
+Group ID
+
+Default value: `undef`
 

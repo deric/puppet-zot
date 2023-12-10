@@ -41,4 +41,29 @@ describe 'zot' do
     it { is_expected.to contain_service('registry').with_ensure('running').that_subscribes_to('File[/etc/zot/config.json]') }
     it { is_expected.to contain_systemd__unit_file('registry.service').with_ensure('present') }
   end
+
+  context 'without managed service' do
+    let(:params) do
+      {
+        manage_service: false,
+      }
+    end
+
+    it { is_expected.not_to contain_service('registry') }
+    it { is_expected.not_to contain_systemd__unit_file('registry.service') }
+  end
+
+  context 'with custom user and uid' do
+    let(:params) do
+      {
+        user: 'registry',
+        group: 'www-data',
+        uid: 1002,
+        gid: 500,
+      }
+    end
+
+    it { is_expected.to contain_user('registry').with_ensure('present').with(uid: 1002) }
+    it { is_expected.to contain_group('www-data').with_ensure('present').with(gid: 500) }
+  end
 end

@@ -24,6 +24,10 @@
 # @param service_enable
 # @param download_mirror
 #   URI used for downloading zot binaries
+# @param uid
+#   User account UID
+# @param gid
+#   Group ID
 # @see https://zotregistry.io/
 # @example
 #   include zot
@@ -37,20 +41,22 @@
 #     }
 #   }
 class zot (
-  Hash             $config,
-  Hash             $defaults,
-  String           $version,
-  Stdlib::Unixpath $binary,
-  String           $user,
-  String           $group,
-  String           $service_name,
-  String           $service_ensure,
-  Boolean          $service_enable,
-  Stdlib::Unixpath $config_dir,
-  Stdlib::Unixpath $log_dir,
-  Stdlib::Unixpath $data_dir,
-  Boolean          $manage_service,
-  Stdlib::HTTPUrl  $download_mirror,
+  Hash              $config,
+  Hash              $defaults,
+  String            $version,
+  Stdlib::Unixpath  $binary,
+  String            $user,
+  String            $group,
+  String            $service_name,
+  String            $service_ensure,
+  Boolean           $service_enable,
+  Stdlib::Unixpath  $config_dir,
+  Stdlib::Unixpath  $log_dir,
+  Stdlib::Unixpath  $data_dir,
+  Boolean           $manage_service,
+  Stdlib::HTTPUrl   $download_mirror,
+  Optional[Integer] $uid = undef,
+  Optional[Integer] $gid = undef,
 ) {
   contain zot::install
   contain zot::config

@@ -1,4 +1,4 @@
-# @summary Manages configuration
+# @summary Manages configuration, merges Puppet hashes and serialized them into JSON config
 # @api private
 class zot::config (
   String $user = $zot::user,
@@ -19,10 +19,12 @@ class zot::config (
 
   user { $user:
     ensure => present,
+    uid    => $zot::uid,
   }
 
   group { $group:
     ensure => present,
+    gid    => $zot::gid,
   }
 
   file { $zot::config_dir:
