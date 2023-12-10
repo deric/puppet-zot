@@ -1,6 +1,5 @@
 # puppet-zot
-
-[![Tests](https://github.com/deric/puppet-zot/actions/workflows/test.yml/badge.svg)](https://github.com/deric/puppet-zot/actions/workflows/test.yml)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/deric/zot.svg)](https://forge.puppet.com/modules/deric/zot) [![Tests](https://github.com/deric/puppet-zot/actions/workflows/test.yml/badge.svg)](https://github.com/deric/puppet-zot/actions/workflows/test.yml)
 
 Puppet module to manage [zot registry](https://zotregistry.io/).
 
