@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## Release 0.1.0
+## Release 1.0.0 [2023-12-10]
 
 **Features**
 
-**Bugfixes**
+  Inital (feature complete) release.
 
-**Known Issues**
+  Module manages `zot` registry service and serializes configuration from yaml to JSON that is supplied to the service.
+
