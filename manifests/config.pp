@@ -5,14 +5,16 @@ class zot::config (
   String $group = $zot::group,
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
-  user { $user:
-    ensure => present,
-    uid    => $zot::uid,
-  }
+  if $zot::manage_user {
+    user { $user:
+      ensure => present,
+      uid    => $zot::uid,
+    }
 
-  group { $group:
-    ensure => present,
-    gid    => $zot::gid,
+    group { $group:
+      ensure => present,
+      gid    => $zot::gid,
+    }
   }
 
   file { $zot::config_dir:

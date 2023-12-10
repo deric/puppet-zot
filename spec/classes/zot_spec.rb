@@ -154,4 +154,15 @@ describe 'zot' do
         .with_content(%r{MemoryMax=32G})
     }
   end
+
+  context 'without managed user' do
+    let(:params) do
+      {
+        manage_user: false,
+      }
+    end
+
+    it { is_expected.not_to contain_user('zot') }
+    it { is_expected.not_to contain_group('zot') }
+  end
 end
