@@ -67,4 +67,16 @@ describe 'zot' do
     it { is_expected.to contain_user('registry').with_ensure('present').with(uid: 1002) }
     it { is_expected.to contain_group('www-data').with_ensure('present').with(gid: 500) }
   end
+
+  context 'without zli' do
+    let(:params) do
+      {
+        version: '1.4.3',
+        manage_zli: false,
+      }
+    end
+
+    it { is_expected.not_to contain_archive('/usr/bin/zli-1.4.3') }
+    it { is_expected.not_to contain_file('/usr/bin/zli') }
+  end
 end

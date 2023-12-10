@@ -30,21 +30,23 @@ class zot::install (
     replace => true,
   }
 
-  $zli_binary = "${bin_path}/zli"
-  $_zli = "${zli_binary}-${version}"
-  archive { $_zli:
-    source          => "${zot::download_mirror}/v${version}/zli-linux-${arch}",
-    checksum_verify => false,
-    extract         => true,
-    extract_path    => $bin_path,
-    extract_command => 'chmod +x %s',
-    cleanup         => false,
-    creates         => [$zli_binary],
-  }
+  if $zot::manage_zli {
+    $zli_binary = "${bin_path}/zli"
+    $_zli = "${zli_binary}-${version}"
+    archive { $_zli:
+      source          => "${zot::download_mirror}/v${version}/zli-linux-${arch}",
+      checksum_verify => false,
+      extract         => true,
+      extract_path    => $bin_path,
+      extract_command => 'chmod +x %s',
+      cleanup         => false,
+      creates         => [$zli_binary],
+    }
 
-  file { $zli_binary:
-    ensure  => link,
-    target  => $_zli,
-    replace => true,
+    file { $zli_binary:
+      ensure  => link,
+      target  => $_zli,
+      replace => true,
+    }
   }
 }

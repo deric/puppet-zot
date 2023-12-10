@@ -52,6 +52,7 @@ The following parameters are available in the `zot` class:
 
 * [`version`](#-zot--version)
 * [`binary`](#-zot--binary)
+* [`bin_path`](#-zot--bin_path)
 * [`config`](#-zot--config)
 * [`defaults`](#-zot--defaults)
 * [`user`](#-zot--user)
@@ -60,6 +61,7 @@ The following parameters are available in the `zot` class:
 * [`log_dir`](#-zot--log_dir)
 * [`data_dir`](#-zot--data_dir)
 * [`manage_service`](#-zot--manage_service)
+* [`manage_zli`](#-zot--manage_zli)
 * [`service_name`](#-zot--service_name)
 * [`service_ensure`](#-zot--service_ensure)
 * [`service_enable`](#-zot--service_enable)
@@ -75,9 +77,15 @@ Version to be fetched from github release page, without `v` prefix (see https://
 
 ##### <a name="-zot--binary"></a>`binary`
 
+Data type: `String`
+
+Main executable name, default: `zot`
+
+##### <a name="-zot--bin_path"></a>`bin_path`
+
 Data type: `Stdlib::Unixpath`
 
-Path to the main executable
+Path for installing binaries, default: `/usr/bin`
 
 ##### <a name="-zot--config"></a>`config`
 
@@ -95,19 +103,19 @@ Default values that would be overwritten by $config Hash
 
 Data type: `String`
 
-Account running the service
+Account running the service, default: `zot`
 
 ##### <a name="-zot--group"></a>`group`
 
 Data type: `String`
 
-Group owning service and config files
+Group owning service and config files, default: `zot`
 
 ##### <a name="-zot--config_dir"></a>`config_dir`
 
 Data type: `Stdlib::Unixpath`
 
-Directory storing zot service configuration
+Directory storing zot service configuration, default: `/etc/zot`
 
 ##### <a name="-zot--log_dir"></a>`log_dir`
 
@@ -125,7 +133,13 @@ Directory used for storing registry data
 
 Data type: `Boolean`
 
-Whether service should be managed by Puppet
+Whether service should be managed by Puppet, default: `true`
+
+##### <a name="-zot--manage_zli"></a>`manage_zli`
+
+Data type: `Boolean`
+
+Whether zli binary should be installed, default: `true`
 
 ##### <a name="-zot--service_name"></a>`service_name`
 
