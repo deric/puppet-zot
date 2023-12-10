@@ -1,6 +1,7 @@
 ---
 zot::version: 1.4.3
-zot::binary: /usr/bin/zot
+zot::binary: zot
+zot::bin_path: /usr/bin
 zot::user: zot
 zot::group: zot
 zot::config_dir: /etc/zot

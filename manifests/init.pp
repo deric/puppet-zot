@@ -2,17 +2,19 @@
 # @param version
 #   Version to be fetched from github release page, without `v` prefix (see https://github.com/project-zot/zot/releases)
 # @param binary
-#   Path to the main executable
+#   Main executable name, default: `zot`
+# @param bin_path
+#   Path for installing binaries, default: `/usr/bin`
 # @param config
 #   Main zot configuration, as multi-level hash (see README for more examples)
 # @param defaults
 #   Default values that would be overwritten by $config Hash
 # @param user
-#  Account running the service
+#  Account running the service, default: `zot`
 # @param group
-#  Group owning service and config files
+#  Group owning service and config files, default: `zot`
 # @param config_dir
-#   Directory storing zot service configuration
+#   Directory storing zot service configuration, default: `/etc/zot`
 # @param log_dir
 #   Directory used for storing log files
 # @param data_dir
@@ -44,7 +46,8 @@ class zot (
   Hash              $config,
   Hash              $defaults,
   String            $version,
-  Stdlib::Unixpath  $binary,
+  String            $binary,
+  Stdlib::Unixpath  $bin_path,
   String            $user,
   String            $group,
   String            $service_name,
