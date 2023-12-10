@@ -30,6 +30,8 @@
 # @param service_enable
 # @param download_mirror
 #   URI used for downloading zot binaries
+# @param arch
+#   Release architecture, eiter `amd64` or `arm64`. Default: `amd64`
 # @param uid
 #   User account UID
 # @param gid
@@ -64,6 +66,7 @@ class zot (
   Boolean           $manage_config,
   Boolean           $manage_zli,
   Stdlib::HTTPUrl   $download_mirror,
+  Zot::Arch         $arch,
   Optional[Integer] $uid = undef,
   Optional[Integer] $gid = undef,
 ) {

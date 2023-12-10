@@ -100,4 +100,22 @@ describe 'zot' do
 
     it { is_expected.not_to contain_file('/etc/zot/config.json').with_ensure('file') }
   end
+
+  context 'with arch=arm64' do
+    let(:params) do
+      {
+        version: '1.4.3',
+        arch: 'arm64',
+      }
+    end
+    it {
+      is_expected.to contain_archive('/usr/bin/zot-1.4.3')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-arm64')
+    }
+    it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-1.4.3') }
+    it {
+      is_expected.to contain_archive('/usr/bin/zli-1.4.3')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zli-linux-arm64')
+    }
+  end
 end

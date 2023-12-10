@@ -6,9 +6,8 @@ class zot::install (
   String           $binary = $zot::binary,
   Stdlib::Unixpath $bin_path = $zot::bin_path,
   String           $version = $zot::version,
-  # $facts['os']['architecture'] is on RedHat x86_64 while on Debian amd64
-  String           $arch = 'amd64',
-  Stdlib::HTTPUrl $download_mirror = $zot::download_mirror,
+  Zot::Arch        $arch = $zot::arch,
+  Stdlib::HTTPUrl  $download_mirror = $zot::download_mirror,
 ) {
   $zot_binary = "${bin_path}/${zot::binary}"
   # add suffix for specific version

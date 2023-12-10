@@ -16,6 +16,10 @@
 * `zot::install`: Zot installation
 * `zot::service`: Zot service
 
+### Data types
+
+* [`Zot::Arch`](#Zot--Arch): Supported build architecture
+
 ## Classes
 
 ### <a name="zot"></a>`zot`
@@ -67,6 +71,7 @@ The following parameters are available in the `zot` class:
 * [`service_ensure`](#-zot--service_ensure)
 * [`service_enable`](#-zot--service_enable)
 * [`download_mirror`](#-zot--download_mirror)
+* [`arch`](#-zot--arch)
 * [`uid`](#-zot--uid)
 * [`gid`](#-zot--gid)
 
@@ -172,6 +177,12 @@ Data type: `Stdlib::HTTPUrl`
 
 URI used for downloading zot binaries
 
+##### <a name="-zot--arch"></a>`arch`
+
+Data type: `Zot::Arch`
+
+Release architecture, eiter `amd64` or `arm64`. Default: `amd64`
+
 ##### <a name="-zot--uid"></a>`uid`
 
 Data type: `Optional[Integer]`
@@ -187,4 +198,12 @@ Data type: `Optional[Integer]`
 Group ID
 
 Default value: `undef`
+
+## Data types
+
+### <a name="Zot--Arch"></a>`Zot::Arch`
+
+Supported build architecture
+
+Alias of `Enum['amd64', 'arm64']`
 
