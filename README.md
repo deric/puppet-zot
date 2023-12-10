@@ -169,7 +169,7 @@ In order to bind the `zot` service on ports < 1024, you'll need either `root` pr
 
 ```yaml
 file_capability::file_capabilities:
-  "/usr/bin/zot-%{alias('zot::version')}":
+  "/usr/bin/zot-%{lookup('zot::version')}":
     ensure: present
     capability: 'cap_net_bind_service=eip'
 ```
