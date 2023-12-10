@@ -9,7 +9,7 @@ ExecStart=<%= $binary %> serve <%= $config_file %>
 Restart=on-failure
 User=<%= $user %>
 Group=<%= $group %>
-LimitNOFILE=500000
+LimitNOFILE=<%= $limit_nofile %>
 MemoryHigh=30G
 MemoryMax=32G
 

@@ -162,4 +162,4 @@ Change log directory:
 zot::log_dir: /srv/log
 ```
 
-Puppet variables for documented in [REFERENCE.md](./REFERENCE.md).
+All Puppet variables are documented in [REFERENCE.md](./REFERENCE.md).

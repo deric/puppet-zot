@@ -38,6 +38,8 @@
 #   User account UID
 # @param gid
 #   Group ID
+# @param limit_nofile
+#   Limit number of opened files for systemd service, default: `500000`
 # @see https://zotregistry.io/
 # @example
 #   include zot
@@ -70,6 +72,7 @@ class zot (
   Stdlib::HTTPUrl   $download_mirror,
   Zot::Arch         $arch,
   Zot::Os           $os,
+  Integer           $limit_nofile,
   Optional[Integer] $uid = undef,
   Optional[Integer] $gid = undef,
 ) {

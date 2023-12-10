@@ -77,6 +77,7 @@ The following parameters are available in the `zot` class:
 * [`os`](#-zot--os)
 * [`uid`](#-zot--uid)
 * [`gid`](#-zot--gid)
+* [`limit_nofile`](#-zot--limit_nofile)
 
 ##### <a name="-zot--version"></a>`version`
 
@@ -208,6 +209,12 @@ Group ID
 
 Default value: `undef`
 
+##### <a name="-zot--limit_nofile"></a>`limit_nofile`
+
+Data type: `Integer`
+
+Limit number of opened files for systemd service, default: `500000`
+
 ## Data types
 
 ### <a name="Zot--Arch"></a>`Zot::Arch`
@@ -229,6 +236,7 @@ Struct[{
   Optional[http]            => Hash,
   Optional[log]             => Hash,
   Optional[extensions]      => Hash,
+  Optional[scheduler]       => Hash,
 }]
 ```
 

@@ -7,10 +7,11 @@ class zot::service (
     $zot_binary = "${zot::bin_path}/${zot::binary}"
     systemd::unit_file { "${service_name}.service":
       content => epp("${module_name}/zot.service.epp", {
-          'binary'      => $zot_binary,
-          'user'        => $zot::user,
-          'group'       => $zot::group,
-          'config_file' => $zot::config::path,
+          'binary'       => $zot_binary,
+          'user'         => $zot::user,
+          'group'        => $zot::group,
+          'config_file'  => $zot::config::path,
+          'limit_nofile' => $zot::limit_nofile,
       }),
       active  => true,
       enable  => $zot::service_enable,

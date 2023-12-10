@@ -119,4 +119,16 @@ describe 'zot' do
         .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zli-linux-arm64')
     }
   end
+
+  context 'with modified nolimit' do
+    let(:params) do
+      {
+        limit_nofile: 10000,
+      }
+    end
+
+    it { is_expected.to contain_systemd__unit_file('zot.service')
+      .with_ensure('present')
+      .with_content(/LimitNOFILE=10000/) }
+  end
 end

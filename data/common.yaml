@@ -15,6 +15,7 @@ zot::manage_zli: true
 zot::service_name: zot
 zot::service_ensure: running
 zot::service_enable: true
+zot::limit_nofile: 500000
 zot::config: {}
 zot::defaults:
   distSpecVersion: 1.0.1
