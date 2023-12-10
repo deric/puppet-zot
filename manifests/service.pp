@@ -12,6 +12,8 @@ class zot::service (
           'group'        => $zot::group,
           'config_file'  => $zot::config::path,
           'limit_nofile' => $zot::limit_nofile,
+          'memory_high'  => $zot::memory_high,
+          'memory_max'   => $zot::memory_max,
       }),
       active  => true,
       enable  => $zot::service_enable,

@@ -10,8 +10,12 @@ Restart=on-failure
 User=<%= $user %>
 Group=<%= $group %>
 LimitNOFILE=<%= $limit_nofile %>
-MemoryHigh=30G
-MemoryMax=32G
+<%- if $memory_high { -%>
+MemoryHigh=<%= $memory_high %>
+<%- } -%>
+<%- if $memory_max { -%>
+MemoryMax=<%= $memory_max %>
+<%- } -%>
 
 [Install]
 WantedBy=multi-user.target

@@ -40,6 +40,10 @@
 #   Group ID
 # @param limit_nofile
 #   Limit number of opened files for systemd service, default: `500000`
+# @param memory_high
+#   Systemd service throttling limit on memory usage
+# @param memory_max
+#   Systemd service, the absolute limit on memory usage, see https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html
 # @see https://zotregistry.io/
 # @example
 #   include zot
@@ -73,6 +77,8 @@ class zot (
   Zot::Arch         $arch,
   Zot::Os           $os,
   Integer           $limit_nofile,
+  Optional[String]  $memory_high = undef,
+  Optional[String]  $memory_max = undef,
   Optional[Integer] $uid = undef,
   Optional[Integer] $gid = undef,
 ) {

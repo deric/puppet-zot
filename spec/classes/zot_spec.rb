@@ -131,4 +131,19 @@ describe 'zot' do
       .with_ensure('present')
       .with_content(/LimitNOFILE=10000/) }
   end
+
+  context 'with memory limit' do
+    let(:params) do
+      {
+        memory_high: '30G',
+        memory_max: '32G',
+      }
+    end
+
+    it { is_expected.to contain_systemd__unit_file('zot.service')
+      .with_ensure('present')
+      .with_content(/MemoryHigh=30G/)
+      .with_content(/MemoryMax=32G/)
+    }
+  end
 end

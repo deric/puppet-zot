@@ -78,6 +78,8 @@ The following parameters are available in the `zot` class:
 * [`uid`](#-zot--uid)
 * [`gid`](#-zot--gid)
 * [`limit_nofile`](#-zot--limit_nofile)
+* [`memory_high`](#-zot--memory_high)
+* [`memory_max`](#-zot--memory_max)
 
 ##### <a name="-zot--version"></a>`version`
 
@@ -214,6 +216,22 @@ Default value: `undef`
 Data type: `Integer`
 
 Limit number of opened files for systemd service, default: `500000`
+
+##### <a name="-zot--memory_high"></a>`memory_high`
+
+Data type: `Optional[String]`
+
+Systemd service throttling limit on memory usage
+
+Default value: `undef`
+
+##### <a name="-zot--memory_max"></a>`memory_max`
+
+Data type: `Optional[String]`
+
+Systemd service, the absolute limit on memory usage, see https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html
+
+Default value: `undef`
 
 ## Data types
 
