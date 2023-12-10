@@ -61,6 +61,7 @@ The following parameters are available in the `zot` class:
 * [`log_dir`](#-zot--log_dir)
 * [`data_dir`](#-zot--data_dir)
 * [`manage_service`](#-zot--manage_service)
+* [`manage_config`](#-zot--manage_config)
 * [`manage_zli`](#-zot--manage_zli)
 * [`service_name`](#-zot--service_name)
 * [`service_ensure`](#-zot--service_ensure)
@@ -134,6 +135,12 @@ Directory used for storing registry data
 Data type: `Boolean`
 
 Whether service should be managed by Puppet, default: `true`
+
+##### <a name="-zot--manage_config"></a>`manage_config`
+
+Data type: `Boolean`
+
+Whether zot config should be managed by Puppet, default: `true`
 
 ##### <a name="-zot--manage_zli"></a>`manage_zli`
 

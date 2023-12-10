@@ -14,14 +14,25 @@ describe 'zot' do
     it { is_expected.to contain_class('zot::install') }
     it { is_expected.to contain_class('zot::service') }
 
-    it { is_expected.to contain_archive('/usr/bin/zot-1.4.3').with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-amd64') }
+    it {
+      is_expected.to contain_archive('/usr/bin/zot-1.4.3')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-amd64')
+    }
     it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-1.4.3') }
-    it { is_expected.to contain_archive('/usr/bin/zli-1.4.3').with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zli-linux-amd64') }
+    it {
+      is_expected.to contain_archive('/usr/bin/zli-1.4.3')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zli-linux-amd64')
+    }
     it { is_expected.to contain_file('/usr/bin/zli').with_ensure('link').with(target: '/usr/bin/zli-1.4.3') }
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/lib/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/log/zot').with_ensure('directory') }
-    it { is_expected.to contain_service('zot').with_ensure('running').that_subscribes_to('File[/etc/zot/config.json]') }
+    it {
+      is_expected.to contain_service('zot')
+        .with_ensure('running')
+        .that_subscribes_to('File[/etc/zot/config.json]')
+        .that_subscribes_to('File[/usr/bin/zot]')
+    }
     it { is_expected.to contain_user('zot').with_ensure('present') }
     it { is_expected.to contain_group('zot').with_ensure('present') }
     it {
@@ -78,5 +89,15 @@ describe 'zot' do
 
     it { is_expected.not_to contain_archive('/usr/bin/zli-1.4.3') }
     it { is_expected.not_to contain_file('/usr/bin/zli') }
+  end
+
+  context 'without managed config' do
+    let(:params) do
+      {
+        manage_config: false,
+      }
+    end
+
+    it { is_expected.not_to contain_file('/etc/zot/config.json').with_ensure('file') }
   end
 end

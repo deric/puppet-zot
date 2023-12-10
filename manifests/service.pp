@@ -20,7 +20,13 @@ class zot::service (
     service { $service_name:
       ensure    => $zot::service_ensure,
       enable    => $zot::service_enable,
-      subscribe => [File[$zot::config::path], File[$zot_binary]],
+      subscribe => [File[$zot_binary]],
+    }
+
+    if $zot::manage_config {
+      Service<| title == $service_name |> {
+        subscribe => [File[$zot_binary], File[$zot::config::path]],
+      }
     }
   }
 }

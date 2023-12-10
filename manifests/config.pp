@@ -5,18 +5,6 @@ class zot::config (
   String $group = $zot::group,
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
-  $_conf = deep_merge($zot::defaults, {
-      'storage' => {
-        'rootDirectory' => $zot::data_dir,
-      },
-      'log' => {
-        'output' => "${zot::log_dir}/zot.log",
-        'audit' => "${zot::log_dir}/zot-audit.log",
-      }
-  })
-
-  $config = deep_merge($_conf, $zot::config)
-
   user { $user:
     ensure => present,
     uid    => $zot::uid,
@@ -45,12 +33,26 @@ class zot::config (
     group  => $group,
   }
 
-  file { $path:
-    ensure  => file,
-    content => inline_epp('<%= $config.to_json_pretty %>', {
-        'config' => $config,
-    }),
-    owner   => $user,
-    group   => $group,
+  if $zot::manage_config {
+    $_conf = deep_merge($zot::defaults, {
+        'storage' => {
+          'rootDirectory' => $zot::data_dir,
+        },
+        'log' => {
+          'output' => "${zot::log_dir}/zot.log",
+          'audit' => "${zot::log_dir}/zot-audit.log",
+        }
+    })
+
+    $config = deep_merge($_conf, $zot::config)
+
+    file { $path:
+      ensure  => file,
+      content => inline_epp('<%= $config.to_json_pretty %>', {
+          'config' => $config,
+      }),
+      owner   => $user,
+      group   => $group,
+    }
   }
 }

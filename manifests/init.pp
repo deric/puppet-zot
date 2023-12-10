@@ -21,6 +21,8 @@
 #   Directory used for storing registry data
 # @param manage_service
 #   Whether service should be managed by Puppet, default: `true`
+# @param manage_config
+#   Whether zot config should be managed by Puppet, default: `true`
 # @param manage_zli
 #   Whether zli binary should be installed, default: `true`
 # @param service_name
@@ -59,6 +61,7 @@ class zot (
   Stdlib::Unixpath  $log_dir,
   Stdlib::Unixpath  $data_dir,
   Boolean           $manage_service,
+  Boolean           $manage_config,
   Boolean           $manage_zli,
   Stdlib::HTTPUrl   $download_mirror,
   Optional[Integer] $uid = undef,
