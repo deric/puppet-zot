@@ -63,6 +63,7 @@ The following parameters are available in the `zot` class:
 * [`service_name`](#-zot--service_name)
 * [`service_ensure`](#-zot--service_ensure)
 * [`service_enable`](#-zot--service_enable)
+* [`download_mirror`](#-zot--download_mirror)
 
 ##### <a name="-zot--version"></a>`version`
 
@@ -141,4 +142,10 @@ Data type: `String`
 Data type: `Boolean`
 
 
+
+##### <a name="-zot--download_mirror"></a>`download_mirror`
+
+Data type: `Stdlib::HTTPUrl`
+
+URI used for downloading zot binaries
 

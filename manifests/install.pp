@@ -7,11 +7,12 @@ class zot::install (
   String $version = $zot::version,
   # $facts['os']['architecture'] is on RedHat x86_64 while on Debian amd64
   String $arch = 'amd64',
+  Stdlib::HTTPUrl $download_mirror = $zot::download_mirror,
 ) {
   $_zot = "${binary}-${version}"
   # archive won't replace binay upon version change
   archive { $_zot:
-    source          => "https://github.com/project-zot/zot/releases/download/v${version}/zot-linux-${arch}",
+    source          => "${zot::download_mirror}/v${version}/zot-linux-${arch}",
     checksum_verify => false,
     extract         => true,
     extract_path    => '/usr/bin',
@@ -27,7 +28,7 @@ class zot::install (
   }
 
   archive { '/usr/bin/zli':
-    source          => "https://github.com/project-zot/zot/releases/download/v${version}/zli-linux-${arch}",
+    source          => "${zot::download_mirror}/v${version}/zli-linux-${arch}",
     checksum_verify => false,
     extract         => true,
     extract_path    => '/usr/bin',

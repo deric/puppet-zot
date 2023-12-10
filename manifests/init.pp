@@ -22,6 +22,8 @@
 # @param service_name
 # @param service_ensure
 # @param service_enable
+# @param download_mirror
+#   URI used for downloading zot binaries
 # @see https://zotregistry.io/
 # @example
 #   include zot
@@ -48,6 +50,7 @@ class zot (
   Stdlib::Unixpath $log_dir,
   Stdlib::Unixpath $data_dir,
   Boolean          $manage_service,
+  Stdlib::HTTPUrl  $download_mirror,
 ) {
   contain zot::install
   contain zot::config

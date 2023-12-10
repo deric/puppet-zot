@@ -6,6 +6,7 @@ zot::group: zot
 zot::config_dir: /etc/zot
 zot::log_dir: /var/log/zot
 zot::data_dir: /var/lib/zot
+zot::download_mirror: https://github.com/project-zot/zot/releases/download
 zot::manage_service: true
 zot::service_name: zot
 zot::service_ensure: running

@@ -14,7 +14,7 @@ describe 'zot' do
     it { is_expected.to contain_class('zot::install') }
     it { is_expected.to contain_class('zot::service') }
 
-    it { is_expected.to contain_archive('/usr/bin/zot-1.4.3') }
+    it { is_expected.to contain_archive('/usr/bin/zot-1.4.3').with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-amd64') }
     it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-1.4.3') }
     it { is_expected.to contain_archive('/usr/bin/zli') }
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
@@ -29,5 +29,16 @@ describe 'zot' do
                                                          .with_content(%r{"rootDirectory":\s+"/var/lib/zot"})
     }
     it { is_expected.to contain_systemd__unit_file('zot.service').with_ensure('present') }
+  end
+
+  context 'with custom service name' do
+    let(:params) do
+      {
+        service_name: 'registry',
+      }
+    end
+
+    it { is_expected.to contain_service('registry').with_ensure('running').that_subscribes_to('File[/etc/zot/config.json]') }
+    it { is_expected.to contain_systemd__unit_file('registry.service').with_ensure('present') }
   end
 end
