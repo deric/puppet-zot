@@ -128,13 +128,15 @@ describe 'zot' do
   context 'with modified nolimit' do
     let(:params) do
       {
-        limit_nofile: 10000,
+        limit_nofile: 10_000,
       }
     end
 
-    it { is_expected.to contain_systemd__unit_file('zot.service')
-      .with_ensure('present')
-      .with_content(/LimitNOFILE=10000/) }
+    it {
+      is_expected.to contain_systemd__unit_file('zot.service')
+        .with_ensure('present')
+        .with_content(%r{LimitNOFILE=10000})
+    }
   end
 
   context 'with memory limit' do
@@ -145,10 +147,11 @@ describe 'zot' do
       }
     end
 
-    it { is_expected.to contain_systemd__unit_file('zot.service')
-      .with_ensure('present')
-      .with_content(/MemoryHigh=30G/)
-      .with_content(/MemoryMax=32G/)
+    it {
+      is_expected.to contain_systemd__unit_file('zot.service')
+        .with_ensure('present')
+        .with_content(%r{MemoryHigh=30G})
+        .with_content(%r{MemoryMax=32G})
     }
   end
 end
