@@ -173,4 +173,4 @@ file_capability::file_capabilities:
     capability: 'cap_net_bind_service=eip'
 ```
 
-All Puppet variables are documented in [REFERENCE.md](./REFERENCE.md).
+All Puppet variables are documented in [REFERENCE.md](./docs/REFERENCE.md).
