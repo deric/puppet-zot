@@ -68,6 +68,7 @@ The following parameters are available in the `zot` class:
 * [`data_dir`](#-zot--data_dir)
 * [`manage_service`](#-zot--manage_service)
 * [`manage_user`](#-zot--manage_user)
+* [`user_ensure`](#-zot--user_ensure)
 * [`manage_config`](#-zot--manage_config)
 * [`manage_zli`](#-zot--manage_zli)
 * [`manage_zb`](#-zot--manage_zb)
@@ -154,6 +155,12 @@ Whether service should be managed by Puppet, default: `true`
 Data type: `Boolean`
 
 Whether user account should be managed by Puppet, default: `true`
+
+##### <a name="-zot--user_ensure"></a>`user_ensure`
+
+Data type: `String`
+
+`present` or `absent`, default: `present`
 
 ##### <a name="-zot--manage_config"></a>`manage_config`
 

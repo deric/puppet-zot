@@ -23,6 +23,8 @@
 #   Whether service should be managed by Puppet, default: `true`
 # @param manage_user
 #   Whether user account should be managed by Puppet, default: `true`
+# @param user_ensure
+#   `present` or `absent`, default: `present`
 # @param manage_config
 #   Whether zot config should be managed by Puppet, default: `true`
 # @param manage_zli
@@ -67,6 +69,7 @@ class zot (
   String            $binary,
   Stdlib::Unixpath  $bin_path,
   String            $user,
+  String            $user_ensure,
   String            $group,
   String            $service_name,
   String            $service_ensure,

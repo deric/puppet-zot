@@ -2,17 +2,19 @@
 # @api private
 class zot::config (
   String $user = $zot::user,
+  String $user_ensure = $zot::user_ensure,
   String $group = $zot::group,
   Stdlib::Unixpath $path = "${zot::config_dir}/config.json"
 ) {
   if $zot::manage_user {
     user { $user:
-      ensure => present,
-      uid    => $zot::uid,
+      ensure     => $user_ensure,
+      managehome => true,
+      uid        => $zot::uid,
     }
 
     group { $group:
-      ensure => present,
+      ensure => $user_ensure,
       gid    => $zot::gid,
     }
   }
