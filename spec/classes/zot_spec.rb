@@ -15,20 +15,20 @@ describe 'zot' do
     it { is_expected.to contain_class('zot::service') }
 
     it {
-      is_expected.to contain_archive('/usr/bin/zot-1.4.3')
-        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zot-linux-amd64')
+      is_expected.to contain_archive('/usr/bin/zot-2.0.0')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v2.0.0/zot-linux-amd64')
     }
-    it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-1.4.3') }
+    it { is_expected.to contain_file('/usr/bin/zot').with_ensure('link').with(target: '/usr/bin/zot-2.0.0') }
     it {
-      is_expected.to contain_archive('/usr/bin/zli-1.4.3')
-        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zli-linux-amd64')
+      is_expected.to contain_archive('/usr/bin/zli-2.0.0')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v2.0.0/zli-linux-amd64')
     }
-    it { is_expected.to contain_file('/usr/bin/zli').with_ensure('link').with(target: '/usr/bin/zli-1.4.3') }
+    it { is_expected.to contain_file('/usr/bin/zli').with_ensure('link').with(target: '/usr/bin/zli-2.0.0') }
     it {
-      is_expected.to contain_archive('/usr/bin/zb-1.4.3')
-        .with(source: 'https://github.com/project-zot/zot/releases/download/v1.4.3/zb-linux-amd64')
+      is_expected.to contain_archive('/usr/bin/zb-2.0.0')
+        .with(source: 'https://github.com/project-zot/zot/releases/download/v2.0.0/zb-linux-amd64')
     }
-    it { is_expected.to contain_file('/usr/bin/zb').with_ensure('link').with(target: '/usr/bin/zb-1.4.3') }
+    it { is_expected.to contain_file('/usr/bin/zb').with_ensure('link').with(target: '/usr/bin/zb-2.0.0') }
     it { is_expected.to contain_file('/etc/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/lib/zot').with_ensure('directory') }
     it { is_expected.to contain_file('/var/log/zot').with_ensure('directory') }

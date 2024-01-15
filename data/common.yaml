@@ -1,6 +1,6 @@
 ---
 zot::arch: amd64
-zot::version: 1.4.3
+zot::version: 2.0.0
 zot::binary: zot
 zot::bin_path: /usr/bin
 zot::user: zot
