@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.2.0 [2024-01-15]
+
+ Upgrade to zot registry 2.0.0 by default
+
 ## Release 1.1.0 [2023-12-12]
 
   Optional user management
