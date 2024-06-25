@@ -6,5 +6,7 @@ fixtures:
      stdlib:
        repo: "puppetlabs/stdlib"
      #  ref: 9.0.0
-     archive: "puppet/archive"
+     archive:
+       repo: "puppet/archive"
+     #  ref: 7.0.0
      systemd: "puppet/systemd"

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 2.0.0 [2024-06-25]
+
+- Use `stdlib::to_json_pretty` (require `puppetlabs::stdlib` >= `9.0.0`)
+- Fix min dependency `puppet/archive` >= `7.0.0`
+
 ## Release 1.2.0 [2024-01-15]
 
  Upgrade to zot registry 2.0.0 by default
