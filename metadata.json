@@ -1,6 +1,6 @@
 {
   "name": "deric-zot",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "author": "Tomas Barton",
   "summary": "zot registry management",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 7.0.0 < 10.0.0"
+      "version_requirement": ">= 9.0.0 < 10.0.0"
     },
     {
       "name": "puppet/systemd",

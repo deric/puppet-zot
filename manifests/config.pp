@@ -52,7 +52,7 @@ class zot::config (
 
     file { $path:
       ensure  => file,
-      content => inline_epp('<%= $config.to_json_pretty %>', {
+      content => inline_epp('<%= stdlib::to_json_pretty($config) %>', {
           'config' => $config,
       }),
       owner   => $user,
