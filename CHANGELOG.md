@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 2.1.0 [2024-06-25]
+
+- Support `puppet/systemd` 7.x
+- Drop Debian 10
+
 ## Release 2.0.0 [2024-06-25]
 
 - Use `stdlib::to_json_pretty` (require `puppetlabs::stdlib` >= `9.0.0`)

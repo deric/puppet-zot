@@ -1,6 +1,6 @@
 {
   "name": "deric-zot",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Tomas Barton",
   "summary": "zot registry management",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     },
     {
       "name": "puppet/systemd",
-      "version_requirement": ">= 3.1.0 < 7.0.0"
+      "version_requirement": ">= 3.1.0 < 8.0.0"
     },
     {
       "name": "puppet/archive",
@@ -52,7 +52,6 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "10",
         "11",
         "12"
       ]
@@ -61,7 +60,8 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "20.04",
-        "22.04"
+        "22.04",
+        "24.04"
       ]
     }
   ],
