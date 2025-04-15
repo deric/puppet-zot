@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 2.2.0 [2025-04-15]
+
+- Allow `puppet/systemd` 8.x
+
 ## Release 2.1.0 [2024-06-25]
 
 - Support `puppet/systemd` 7.x
